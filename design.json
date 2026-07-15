@@ -1,0 +1,267 @@
+{
+  "designSystemProfile": {
+    "name": "Modern Tech & Metaverse Design System",
+    "version": "1.0",
+    "category": "futuristic-tech",
+
+    "colorPalettes": {
+      "primary": {
+        "darkTheme": {
+          "background": ["#0a0a0a", "#1a1a1a", "#2a2a2a"],
+          "surface": ["#1e1e1e", "#2d2d2d", "#3a3a3a"],
+          "accent": ["#8b5cf6", "#a855f7", "#9333ea"],
+          "secondary": ["#06b6d4", "#0891b2", "#0e7490"],
+          "highlight": ["#ec4899", "#db2777", "#be185d"],
+          "success": ["#10b981", "#059669", "#047857"],
+          "text": {
+            "primary": "#ffffff",
+            "secondary": "#a1a1aa",
+            "muted": "#71717a"
+          }
+        },
+        "gradients": {
+          "neon": "linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%)",
+          "cosmic": "linear-gradient(45deg, #1e1b4b 0%, #312e81 50%, #1e40af 100%)",
+          "vibrant": "linear-gradient(90deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%)",
+          "tech": "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)"
+        }
+      }
+    },
+
+    "typography": {
+      "fontFamilies": {
+        "primary": "system-ui, -apple-system, sans-serif",
+        "heading": "Inter, Helvetica, Arial, sans-serif",
+        "mono": "JetBrains Mono, Consolas, monospace"
+      },
+      "scales": {
+        "hero": {
+          "fontSize": ["3rem", "4rem", "5rem"],
+          "fontWeight": [700, 800, 900],
+          "lineHeight": [1.1, 1.0, 0.9],
+          "letterSpacing": "-0.02em"
+        },
+        "heading": {
+          "h1": { "fontSize": "2.5rem", "fontWeight": 700, "lineHeight": 1.2 },
+          "h2": { "fontSize": "2rem", "fontWeight": 600, "lineHeight": 1.3 },
+          "h3": { "fontSize": "1.5rem", "fontWeight": 600, "lineHeight": 1.4 }
+        },
+        "body": {
+          "large": { "fontSize": "1.125rem", "lineHeight": 1.6 },
+          "base": { "fontSize": "1rem", "lineHeight": 1.6 },
+          "small": { "fontSize": "0.875rem", "lineHeight": 1.5 }
+        }
+      }
+    },
+
+    "spacing": {
+      "scale": [4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
+      "containerSizes": {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1536px"
+      },
+      "sections": {
+        "hero": { "paddingY": ["4rem", "6rem", "8rem"] },
+        "content": { "paddingY": ["3rem", "4rem", "5rem"] },
+        "compact": { "paddingY": ["2rem", "2.5rem", "3rem"] }
+      }
+    },
+
+    "components": {
+      "buttons": {
+        "primary": {
+          "background": "linear-gradient(135deg, #8b5cf6, #a855f7)",
+          "color": "#ffffff",
+          "padding": "12px 24px",
+          "borderRadius": "8px",
+          "fontWeight": 600,
+          "border": "none",
+          "cursor": "pointer",
+          "transition": "all 0.3s ease",
+          "hover": {
+            "transform": "translateY(-2px)",
+            "boxShadow": "0 10px 25px rgba(139, 92, 246, 0.3)"
+          }
+        },
+        "secondary": {
+          "background": "transparent",
+          "color": "#8b5cf6",
+          "border": "2px solid #8b5cf6",
+          "padding": "10px 22px",
+          "borderRadius": "8px",
+          "fontWeight": 600,
+          "hover": {
+            "background": "#8b5cf6",
+            "color": "#ffffff"
+          }
+        },
+        "ghost": {
+          "background": "rgba(139, 92, 246, 0.1)",
+          "color": "#8b5cf6",
+          "border": "1px solid rgba(139, 92, 246, 0.2)",
+          "padding": "10px 22px",
+          "borderRadius": "8px"
+        }
+      },
+
+      "cards": {
+        "feature": {
+          "background": "linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))",
+          "border": "1px solid rgba(255, 255, 255, 0.1)",
+          "borderRadius": "12px",
+          "padding": "24px",
+          "backdropFilter": "blur(10px)",
+          "hover": {
+            "transform": "translateY(-4px)",
+            "boxShadow": "0 20px 40px rgba(139, 92, 246, 0.2)"
+          }
+        },
+        "highlight": {
+          "background": "linear-gradient(135deg, #8b5cf6, #ec4899)",
+          "color": "#ffffff",
+          "borderRadius": "12px",
+          "padding": "32px",
+          "transform": "scale(1.05)",
+          "boxShadow": "0 25px 50px rgba(139, 92, 246, 0.3)"
+        },
+        "glass": {
+          "background": "rgba(255, 255, 255, 0.05)",
+          "border": "1px solid rgba(255, 255, 255, 0.1)",
+          "borderRadius": "16px",
+          "backdropFilter": "blur(20px)",
+          "padding": "24px"
+        }
+      },
+
+      "navigation": {
+        "header": {
+          "background": "rgba(10, 10, 10, 0.8)",
+          "backdropFilter": "blur(20px)",
+          "border": "1px solid rgba(255, 255, 255, 0.1)",
+          "padding": "16px 0",
+          "position": "fixed",
+          "width": "100%",
+          "zIndex": 1000
+        },
+        "links": {
+          "color": "#a1a1aa",
+          "fontWeight": 500,
+          "padding": "8px 16px",
+          "borderRadius": "6px",
+          "transition": "all 0.2s ease",
+          "hover": {
+            "color": "#ffffff",
+            "background": "rgba(139, 92, 246, 0.1)"
+          }
+        }
+      }
+    },
+
+    "effects": {
+      "glows": {
+        "neon": {
+          "boxShadow": "0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3)",
+          "filter": "drop-shadow(0 0 10px rgba(139, 92, 246, 0.7))"
+        },
+        "accent": {
+          "boxShadow": "0 0 30px rgba(236, 72, 153, 0.4)"
+        }
+      },
+      "animations": {
+        "float": {
+          "animation": "float 6s ease-in-out infinite",
+          "keyframes": {
+            "0%, 100%": { "transform": "translateY(0px)" },
+            "50%": { "transform": "translateY(-20px)" }
+          }
+        },
+        "pulse": {
+          "animation": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+          "keyframes": {
+            "0%, 100%": { "opacity": 1 },
+            "50%": { "opacity": 0.7 }
+          }
+        },
+        "fadeInUp": {
+          "animation": "fadeInUp 0.8s ease-out",
+          "keyframes": {
+            "0%": { "opacity": 0, "transform": "translateY(30px)" },
+            "100%": { "opacity": 1, "transform": "translateY(0)" }
+          }
+        }
+      },
+      "blur": {
+        "backdrop": "blur(10px)",
+        "heavy": "blur(20px)",
+        "subtle": "blur(5px)"
+      }
+    },
+
+    "layouts": {
+      "hero": {
+        "display": "grid",
+        "gridTemplateColumns": ["1fr", "1fr", "1fr 1fr"],
+        "alignItems": "center",
+        "gap": ["2rem", "3rem", "4rem"],
+        "minHeight": "100vh",
+        "padding": ["2rem", "3rem", "4rem"]
+      },
+      "features": {
+        "display": "grid",
+        "gridTemplateColumns": ["1fr", "1fr 1fr", "repeat(3, 1fr)"],
+        "gap": ["1.5rem", "2rem", "2.5rem"],
+        "padding": ["2rem", "3rem", "4rem"]
+      },
+      "section": {
+        "maxWidth": "1280px",
+        "margin": "0 auto",
+        "padding": ["1rem", "2rem", "3rem"]
+      }
+    },
+
+    "imagery": {
+      "heroImages": {
+        "style": "futuristic-3d",
+        "effects": ["neon-glow", "floating-animation", "particle-systems"],
+        "themes": ["cyberpunk", "space-tech", "holographic", "vr-metaverse"]
+      },
+      "icons": {
+        "style": "outline-with-fill",
+        "strokeWidth": 2,
+        "size": ["16px", "20px", "24px", "32px"],
+        "colors": ["accent", "secondary", "muted"]
+      },
+      "illustrations": {
+        "style": "gradient-3d",
+        "palette": "neon-cyber",
+        "effects": ["glow", "holographic", "particle-trails"]
+      }
+    },
+
+    "brandPersonality": {
+      "tone": "innovative-futuristic",
+      "style": "cutting-edge-tech",
+      "mood": "exciting-premium",
+      "target": "tech-enthusiasts-early-adopters"
+    },
+
+    "responsiveBreakpoints": {
+      "mobile": "320px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1440px"
+    },
+
+    "accessibility": {
+      "colorContrast": "WCAG-AA-compliant",
+      "focusStates": {
+        "outline": "2px solid #8b5cf6",
+        "outlineOffset": "2px"
+      },
+      "motionPreferences": "respect-reduced-motion"
+    }
+  }
+}
