@@ -1,3 +1,10 @@
+import javascriptUrl from '../../assets/javascript.svg';
+import cloudflareUrl from '../../assets/cloudflare.svg';
+import digitaloceanUrl from '../../assets/digitalocean.svg';
+import figmaUrl from '../../assets/Figma.svg';
+import wordpressUrl from '../../assets/wordpress.svg';
+import reactUrl from '../../assets/react.svg';
+
 export interface TechLogo {
   src: string;
   alt: string;
@@ -8,12 +15,12 @@ export interface TechSliderProps {
 }
 
 const defaultLogos: TechLogo[] = [
-  { src: '/assets/javascript.svg', alt: 'React' },
-  { src: '/assets/cloudflare.svg', alt: 'Node.js' },
-  { src: '/assets/digitalocean.svg', alt: 'JavaScript' },
-  { src: '/assets/Figma.svg', alt: 'Sass' },
-  { src: '/assets/wordpress.svg', alt: 'Figma' },
-  { src: '/assets/react.svg', alt: 'Figma' },
+  { src: javascriptUrl, alt: 'React' },
+  { src: cloudflareUrl, alt: 'Node.js' },
+  { src: digitaloceanUrl, alt: 'JavaScript' },
+  { src: figmaUrl, alt: 'Sass' },
+  { src: wordpressUrl, alt: 'Figma' },
+  { src: reactUrl, alt: 'Figma' },
 ];
 
 export function TechSlider({ logos = defaultLogos }: TechSliderProps) {

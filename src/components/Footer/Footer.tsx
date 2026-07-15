@@ -1,3 +1,5 @@
+import logoUrl from '../../assets/Logo.png';
+
 export interface FooterProps {
   logoSrc?: string;
   logoAlt?: string;
@@ -8,7 +10,7 @@ export interface FooterProps {
 }
 
 export function Footer({
-  logoSrc = '/assets/Logo.png',
+  logoSrc = logoUrl,
   logoAlt = 'Guarotech Future Logo',
   homeHref = '#',
   phone = '+58 412-5270850',

@@ -1,5 +1,6 @@
 import { Button } from '../Button/Button';
 import { TechSlider, type TechLogo } from '../TechSlider/TechSlider';
+import heroImgUrl from '../../assets/hero-img.png';
 
 export interface HeroProps {
   titlePrefix?: string;
@@ -22,7 +23,7 @@ export function Hero({
   primaryCtaHref = '#contacto',
   secondaryCtaLabel = 'Ver Portafolio',
   secondaryCtaHref = '#portafolio',
-  imageSrc = '/assets/hero-img.png',
+  imageSrc = heroImgUrl,
   imageAlt = 'Futuristic Web Design',
   techLogos,
 }: HeroProps) {

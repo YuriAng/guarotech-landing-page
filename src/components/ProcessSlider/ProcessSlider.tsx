@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Button, type ButtonVariant } from '../Button/Button';
+import planificacionUrl from '../../assets/planificacion.png';
+import uxUrl from '../../assets/UX.png';
+import uiUrl from '../../assets/UI.png';
+import desarrolloUrl from '../../assets/desarrollo.png';
+import mantenimientoUrl from '../../assets/mantenimiento.png';
 
 export interface ProcessStep {
   title: string;
@@ -21,7 +26,7 @@ const defaultSteps: ProcessStep[] = [
     title: '1. Planificación y estrategia',
     description:
       'Exploramos el propósito del sitio web, el público objetivo y los objetivos clave. A través de sesiones de estrategia e investigación, definimos el tipo de web necesario, su rol dentro del negocio y el contenido ideal. Esta etapa concluye con un brief que servirá como guía en todo el proyecto.',
-    imageSrc: '/assets/planificacion.jpg',
+    imageSrc: planificacionUrl,
     imageAlt: 'Producto destacado 1',
     ctaLabel: 'Solicita tu cotización',
     ctaHref: '#contacto',
@@ -31,7 +36,7 @@ const defaultSteps: ProcessStep[] = [
     title: '2. Estructura (UX)',
     description:
       'Diseñamos la experiencia del usuario definiendo la cantidad de páginas, su contenido y la forma en que se conectan entre sí. El resultado incluye el mapa del sitio y los wireframes, bocetos que muestran la organización y navegación, sin aspectos visuales aún.',
-    imageSrc: '/assets/UX.png',
+    imageSrc: uxUrl,
     imageAlt: 'Producto destacado 2',
     ctaLabel: 'Solicita tu cotización',
     ctaHref: '#contacto',
@@ -41,7 +46,7 @@ const defaultSteps: ProcessStep[] = [
     title: '3. Diseño (UI)',
     description:
       'Aquí damos vida al sitio visualmente. Seleccionamos la paleta de colores, tipografía, imágenes e iconografía. El diseño refleja la identidad de la marca y guía al usuario a través de una narrativa visual coherente y atractiva.',
-    imageSrc: '/assets/UI.png',
+    imageSrc: uiUrl,
     imageAlt: 'Producto destacado 3',
     ctaLabel: 'Solicita tu cotización',
     ctaHref: '#contacto',
@@ -51,7 +56,7 @@ const defaultSteps: ProcessStep[] = [
     title: '4. Desarrollo',
     description:
       'Transformamos los diseños en un sitio funcional. Usamos tecnologías modernas para construir una web rápida, segura, adaptable a todos los dispositivos y fácil de gestionar. Integramos herramientas necesarias y optimizamos la experiencia técnica del usuario.',
-    imageSrc: '/assets/desarrollo.png',
+    imageSrc: desarrolloUrl,
     imageAlt: 'Producto destacado 4',
     ctaLabel: 'Solicita tu cotización',
     ctaHref: '#contacto',
@@ -61,7 +66,7 @@ const defaultSteps: ProcessStep[] = [
     title: '5. Soporte y mantenimiento',
     description:
       'Nos aseguramos de que tu web siga funcionando de forma óptima tras su lanzamiento. Incluye actualizaciones, mejoras técnicas, soporte ante fallos y acompañamiento continuo para que tu sitio crezca contigo.',
-    imageSrc: '/assets/mantenimiento.png',
+    imageSrc: mantenimientoUrl,
     imageAlt: 'Producto destacado 5',
     ctaLabel: 'Solicita tu cotización',
     ctaHref: '#contacto',

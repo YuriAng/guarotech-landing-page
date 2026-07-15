@@ -1,0 +1,19 @@
+{
+  "projectId": "b04df4aa-7aaf-4857-adac-8451b8bc99c5",
+  "shape": "storybook",
+  "storybookConfigDir": ".storybook",
+  "pkg": "guarotech-landing-page",
+  "globalName": "Guarotech",
+  "storybookStatic": ".design-sync/sb-reference",
+  "entry": "src/index.ts",
+  "buildCmd": "npm run build:types",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "ConfirmMessage": { "cardMode": "column" },
+    "Footer": { "cardMode": "column" },
+    "TechSlider": { "cardMode": "column" },
+    "Header": { "cardMode": "single", "primaryStory": "Default" },
+    "Hero": { "viewport": "900x1120" },
+    "ContactForm": { "viewport": "900x1450" }
+  }
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import logoUrl from '../../assets/Logo.png';
 
 export interface NavLink {
   label: string;
@@ -19,7 +20,7 @@ const defaultNavLinks: NavLink[] = [
 ];
 
 export function Header({
-  logoSrc = '/assets/Logo.png',
+  logoSrc = logoUrl,
   logoAlt = 'Guarotech Future Logo',
   homeHref = '#',
   navLinks = defaultNavLinks,
