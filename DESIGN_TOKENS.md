@@ -2,6 +2,8 @@
 
 Reference extracted from the live source of truth, `styles.css` `:root` (lines 2-42), cross-checked against the intended spec in `design.json`. Use this as the quick lookup when building new sections/pages.
 
+> **Note:** as of the React + Storybook refactor, `styles.css` now lives at `src/styles/styles.css` (content unchanged, imported globally from `src/main.tsx`, `src/confirm.tsx`, and `.storybook/preview.tsx`). The token values and line numbers below still apply.
+
 ## Colors
 
 | Token | Value | Usage |
