@@ -11,6 +11,8 @@ export interface HeaderProps {
   logoAlt?: string;
   homeHref?: string;
   navLinks?: NavLink[];
+  /** href of the nav link to highlight as active (e.g. "#portafolio"), matched exactly. */
+  activeHref?: string;
 }
 
 const defaultNavLinks: NavLink[] = [
@@ -24,6 +26,7 @@ export function Header({
   logoAlt = 'Guarotech Future Logo',
   homeHref = '#',
   navLinks = defaultNavLinks,
+  activeHref,
 }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +47,9 @@ export function Header({
       <ul className={`nav-links${isOpen ? ' open' : ''}`}>
         {navLinks.map((link) => (
           <li key={link.href}>
-            <a href={link.href}>{link.label}</a>
+            <a href={link.href} className={link.href === activeHref ? 'nav-active' : undefined}>
+              {link.label}
+            </a>
           </li>
         ))}
       </ul>

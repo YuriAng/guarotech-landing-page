@@ -21,3 +21,7 @@ export const CustomLinks: Story = {
     ],
   },
 };
+
+export const ActiveSection: Story = {
+  args: { activeHref: '#portafolio' },
+};

@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import type { CSSProperties } from 'react';
+import { useEffect, useRef } from 'react';
+import type { CSSProperties, FormEvent } from 'react';
 import { Button } from '../Button/Button';
 
 export interface ContactFormProps {
@@ -18,12 +18,6 @@ const errorLabelStyle: CSSProperties = {
   textAlign: 'left',
   fontFamily: 'Helvetica, sans-serif',
   color: '#ff4949',
-};
-
-const errorLabelStyleWithBorder: CSSProperties = {
-  ...errorLabelStyle,
-  borderRadius: '3px',
-  borderColor: '#ff4949',
 };
 
 const successPanelStyle: CSSProperties = {
@@ -50,33 +44,13 @@ const errorPanelStyle: CSSProperties = {
   maxWidth: '540px',
 };
 
-const tipoDeServicioOptions = [
-  { value: '1', label: 'Página web: aterrizaje, corporativa, blog, etc.' },
-  { value: '2', label: 'E-commerce' },
-  { value: '3', label: 'Aplicación web' },
-  { value: '4', label: 'Aplicación móvil' },
-  { value: '5', label: 'Diseño UI/UX' },
-  { value: '6', label: 'Consultoría' },
-  { value: '7', label: 'Soporte y mantenimiento' },
-  { value: '8', label: 'Otro' },
-];
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
 
-const presupuestoOptions = [
-  { value: '1', label: 'Menos de $300' },
-  { value: '2', label: '$300 - $1000' },
-  { value: '3', label: '$1000 - $2000' },
-  { value: '4', label: '$2000 - $3000' },
-  { value: '5', label: '$3000 - $4000' },
-  { value: '6', label: '$4000 - $5000' },
-  { value: '7', label: 'Más de $5000' },
-];
-
-const tiempoEstimadoOptions = [
-  { value: '1', label: 'Fléxible' },
-  { value: '2', label: 'En 1 mes' },
-  { value: '3', label: 'En 2 meses' },
-  { value: '4', label: 'En 3 meses' },
-];
+function hasEnoughDigits(value: string, min = 7): boolean {
+  return value.replace(/[^0-9]/g, '').length >= min;
+}
 
 function injectScriptOnce(src: string, attrs: Record<string, string> = {}) {
   if (document.querySelector(`script[src="${src}"]`)) return;
@@ -117,52 +91,75 @@ export function ContactForm({
     injectScriptOnce('https://www.google.com/recaptcha/api.js?hl=es');
   }, []);
 
+  const nombreRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const telefonoRef = useRef<HTMLInputElement>(null);
+
+  // Required = Nombre, Email (valid format), Teléfono (>=7 digits). Blocks
+  // the native POST to Sendinblue on failure; on success the existing flow
+  // (external POST + redirect to the confirmation page) is unchanged.
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const invalidColor = '#ff4d4f';
+    let valid = true;
+
+    const nombre = nombreRef.current;
+    if (nombre) {
+      const ok = Boolean(nombre.value.trim());
+      nombre.style.borderColor = ok ? '' : invalidColor;
+      valid = valid && ok;
+    }
+
+    const email = emailRef.current;
+    if (email) {
+      const ok = Boolean(email.value.trim()) && isValidEmail(email.value);
+      email.style.borderColor = ok ? '' : invalidColor;
+      valid = valid && ok;
+    }
+
+    const telefono = telefonoRef.current;
+    if (telefono) {
+      const ok = hasEnoughDigits(telefono.value);
+      telefono.style.borderColor = ok ? '' : invalidColor;
+      valid = valid && ok;
+    }
+
+    if (!valid) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <section id="contacto" className="gradient-background">
       <div className="contacto" id="sib-form-container">
         <h2>
           Solicita una <span className="contacto-span">Cotización</span>
         </h2>
-        <form className="formulario-contacto" id="sib-form" method="POST" action={actionUrl} data-type="subscription">
-          <div className="formulario-input">
-            <div className="formulario-label sib-input sib-form-block">
-              <div className="form__entry entry_block entry-label">
-                <label>Nombre</label>
-                <div className="entry__field" style={fieldTopPad}>
-                  <input
-                    className="input"
-                    type="text"
-                    maxLength={64}
-                    id="NOMBRE"
-                    name="NOMBRE"
-                    autoComplete="off"
-                    placeholder="Mariana"
-                    data-required="true"
-                    required
-                  />
-                </div>
-                <label className="entry__error entry__error--primary" style={errorLabelStyle}></label>
+        <form
+          className="formulario-contacto"
+          id="sib-form"
+          method="POST"
+          action={actionUrl}
+          data-type="subscription"
+          onSubmit={handleSubmit}
+        >
+          <div className="formulario-label sib-input sib-form-block">
+            <div className="form__entry entry_block entry-label">
+              <label>Nombre y apellido</label>
+              <div className="entry__field" style={fieldTopPad}>
+                <input
+                  ref={nombreRef}
+                  className="input"
+                  type="text"
+                  maxLength={128}
+                  id="NOMBRE"
+                  name="NOMBRE"
+                  autoComplete="off"
+                  placeholder="Carlos Rodríguez"
+                  data-required="true"
+                  required
+                />
               </div>
-            </div>
-
-            <div className="formulario-label sib-input sib-form-block">
-              <div className="form__entry entry_block entry-label">
-                <label>Apellido</label>
-                <div className="entry__field" style={fieldTopPad}>
-                  <input
-                    className="input"
-                    type="text"
-                    maxLength={64}
-                    id="APELLIDOS"
-                    name="APELLIDOS"
-                    autoComplete="off"
-                    placeholder="Torres"
-                    data-required="true"
-                    required
-                  />
-                </div>
-                <label className="entry__error entry__error--primary" style={errorLabelStyle}></label>
-              </div>
+              <label className="entry__error entry__error--primary" style={errorLabelStyle}></label>
             </div>
           </div>
 
@@ -172,12 +169,13 @@ export function ContactForm({
                 <label>Correo Electronico</label>
                 <div className="entry__field" style={fieldTopPad}>
                   <input
+                    ref={emailRef}
                     className="input"
                     type="text"
                     id="EMAIL"
                     name="EMAIL"
                     autoComplete="off"
-                    placeholder="mariana.torres@gmail.com"
+                    placeholder="carlos.rodriguez@empresa.com"
                     data-required="true"
                     required
                   />
@@ -191,13 +189,14 @@ export function ContactForm({
                 <label>Número de telefono</label>
                 <div className="entry__field" style={fieldTopPad}>
                   <input
+                    ref={telefonoRef}
                     className="input"
                     type="text"
                     maxLength={64}
                     id="TELEFONO"
                     name="TELEFONO"
                     autoComplete="off"
-                    placeholder="+58 04245135998"
+                    placeholder="+58 424-1234567"
                     data-required="true"
                     required
                   />
@@ -207,68 +206,9 @@ export function ContactForm({
             </div>
           </div>
 
-          <div className="formulario-input">
-            <div className="formulario-label sib-select sib-form-block">
-              <div className="form__entry entry_block entry-label">
-                <label>Tipo de servicio</label>
-                <div className="entry__field" style={fieldTopPad}>
-                  <select className="input" id="TIPO_DE_SERVICIO" name="TIPO_DE_SERVICIO" data-required="true" required defaultValue="">
-                    <option value="" disabled hidden>
-                      Selecciona un servicio
-                    </option>
-                    {tipoDeServicioOptions.map((option) => (
-                      <option className="sib-menu__item" value={option.value} key={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <label className="entry__error entry__error--primary" style={errorLabelStyle}></label>
-              </div>
-            </div>
-
-            <div className="formulario-label sib-select sib-form-block" data-required="true">
-              <div className="form__entry entry_block entry-label">
-                <label>Rango de presupuesto</label>
-                <div className="entry__field" style={fieldTopPad}>
-                  <select className="input" id="PRESUPUESTO" name="PRESUPUESTO" data-required="true" required defaultValue="">
-                    <option value="" disabled hidden>
-                      Selecciona un rango
-                    </option>
-                    {presupuestoOptions.map((option) => (
-                      <option className="sib-menu__item" value={option.value} key={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <label className="entry__error entry__error--primary" style={errorLabelStyle}></label>
-              </div>
-            </div>
-          </div>
-
-          <div className="formulario-label sib-select sib-form-block" data-required="true">
-            <div className="form__entry entry_block entry-label">
-              <label>Limitación de tiempo</label>
-              <div className="entry__field" style={fieldTopPad}>
-                <select id="TIEMPO_ESTIMADO" name="TIEMPO_ESTIMADO" data-required="true" required defaultValue="">
-                  <option value="" disabled hidden>
-                    ¿Tienes un tiempo esperado para completar el proyecto?
-                  </option>
-                  {tiempoEstimadoOptions.map((option) => (
-                    <option className="sib-menu__item" value={option.value} key={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <label className="entry__error entry__error--primary" style={errorLabelStyleWithBorder}></label>
-            </div>
-          </div>
-
           <div className="formulario-label sib-input sib-form-block">
             <div className="form__entry entry_block entry-label">
-              <label>Descripción del presupuesto</label>
+              <label>Cuéntanos sobre tu proyecto</label>
               <div className="form__label-row">
                 <div className="entry__field" style={fieldTopPad}>
                   <textarea
@@ -276,7 +216,7 @@ export function ContactForm({
                     id="DESCRIPCION"
                     name="DESCRIPCION"
                     autoComplete="off"
-                    placeholder="Cuéntanos sobre tu proyecto"
+                    placeholder="Ej: necesito un e-commerce para vender productos artesanales, con carrito de compras y pagos en línea."
                     rows={5}
                     data-required="true"
                     required

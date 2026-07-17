@@ -1,6 +1,6 @@
 import { Button } from '../Button/Button';
 import { TechSlider, type TechLogo } from '../TechSlider/TechSlider';
-import heroImgUrl from '../../assets/hero-img.png';
+import heroImgUrl from '../../assets/hero-img.webp';
 
 export interface HeroProps {
   titlePrefix?: string;

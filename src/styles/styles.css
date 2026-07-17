@@ -149,6 +149,9 @@ body {
   color: var(--color-accent);
   background: rgba(139, 92, 246, 0.1);
 }
+.nav-links a.nav-active {
+  color: var(--color-accent);
+}
 /*.hero-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -1591,4 +1594,45 @@ body {
 .formulario-contacto input,
 .formulario-contacto select {
   min-height: 44px;
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  /* ProcessSlider's own prev/next controls/indicators sit in this same
+     corner and use z-index up to 50 (mobile breakpoints) — .split-slider
+     itself has no explicit z-index, so it never forms its own stacking
+     context, meaning this competes directly against those values. Set
+     above the highest one used anywhere in that component so the button
+     always wins and is never hidden behind them during scroll — the
+     tradeoff (it may sit visually on top of an arrow for a moment while
+     scrolling past) is preferable to the button disappearing. */
+  z-index: 60;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-accent), 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: var(--transition);
+}
+.whatsapp-fab:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-neon), 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+@media (max-width: 640px) {
+  .whatsapp-fab {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .whatsapp-fab svg {
+    width: 26px;
+    height: 26px;
+  }
 }
