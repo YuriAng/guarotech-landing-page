@@ -13,3 +13,6 @@ storybook-static/
 .design-sync/node_modules
 .ds-sync/
 ds-bundle/
+
+# design handoff bundles (reference material, not app source)
+design_handoff_landing_page_updates/
